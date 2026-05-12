@@ -10,6 +10,9 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-analyze:
     runs-on: ubuntu-latest
@@ -41,3 +44,17 @@ jobs:
           RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
         run: |
           curl -X POST "$RENDER_DEPLOY_HOOK"
+
+      - name: Health check
+        run: |
+          for i in {1..6}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://travel-agency-spa.onrender.com)
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ Frontend is healthy (HTTP $STATUS)"
+              exit 0
+            fi
+            echo "Waiting for frontend to become healthy... attempt $i/6"
+            sleep 10
+          done
+          echo "❌ Frontend health check failed"
+          exit 1
