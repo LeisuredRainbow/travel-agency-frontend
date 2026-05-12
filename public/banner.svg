@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" fill="url(#bg)"/>
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#2ec4b6">✈ Travel Agency</text>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#b2dfdb">SPA Management Console</text>
+</svg>

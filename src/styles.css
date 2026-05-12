@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --ink: #2d3a33;
+  --ink-soft: #5c7366;
+  --accent: #69a481;
+  --accent-deep: #4d8c66;
+  --bg-base: #e7edeb;
+  --header-bg: rgba(231, 237, 235, 0.84);
+  --surface: rgba(255, 255, 255, 0.74);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --line: rgba(45, 58, 51, 0.14);
+  --inset-glint: rgba(255, 255, 255, 0.82);
+  --kicker: rgba(77, 140, 102, 0.9);
+  --chip-bg: rgba(255, 255, 255, 0.8);
+  --chip-line: rgba(77, 140, 102, 0.18);
+  --link-bg-hover: rgba(255, 255, 255, 0.9);
+  --hero-a: rgba(105, 164, 129, 0.36);
+  --hero-b: rgba(105, 164, 129, 0.2);
+  --popover: var(--surface-strong);
+  --popover-foreground: var(--ink);
+}
+
+.dark {
+  --ink: #e0f2f1;
+  --ink-soft: #b2dfdb;
+  --accent: #2ec4b6;
+  --accent-deep: #5eeadb;
+  --bg-base: #0f0a1e;
+  --header-bg: rgba(10, 10, 20, 0.8);
+  --surface: rgba(20, 18, 40, 0.8);
+  --surface-strong: rgba(25, 22, 50, 0.92);
+  --line: rgba(46, 196, 182, 0.18);
+  --inset-glint: rgba(194, 248, 244, 0.14);
+  --kicker: #5eeadb;
+  --chip-bg: rgba(25, 22, 50, 0.9);
+  --chip-line: rgba(46, 196, 182, 0.24);
+  --link-bg-hover: rgba(30, 26, 60, 0.8);
+  --hero-a: rgba(46, 196, 182, 0.22);
+  --hero-b: rgba(94, 234, 219, 0.12);
+  --popover: #1a1a2e;
+  --popover-foreground: #e0f2f1;
+}
+
+@theme inline {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--bg-base);
+  --color-foreground: var(--ink);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--surface-strong);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--surface);
+  --color-muted-foreground: var(--ink-soft);
+  --color-accent: var(--accent-deep);
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--accent);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(1100px 620px at -8% -10%, var(--hero-a), transparent 58%),
+    radial-gradient(1050px 620px at 112% -12%, var(--hero-b), transparent 62%),
+    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-base) 100%);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+}
+
+.display-title {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.island-shell {
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, var(--surface-strong), var(--surface));
+  box-shadow:
+    0 1px 0 var(--inset-glint) inset,
+    0 22px 44px rgba(30, 27, 75, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.page-wrap {
+  width: min(1080px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+input[type="date"] {
+  color-scheme: light;
+  background-color: #ffffff;
+  color: #2d3a33;
+  border: 1px solid var(--line);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.dark input[type="date"] {
+  color-scheme: dark;
+  background-color: #1a1a2e;
+  color: #e0f2f1;
+  border-color: var(--line);
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.no-spinner[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
