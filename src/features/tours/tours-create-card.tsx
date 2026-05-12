@@ -50,7 +50,7 @@ export function ToursCreateCard({
     if (!value.price || value.price <= 0) {
       newErrors.price = 'Price must be greater than 0'
     }
-    if (!value.durationDays || value.durationDays <= 0) {
+    if (value.durationDays !== undefined && value.durationDays !== null && value.durationDays <= 0) {
       newErrors.durationDays = 'Must be at least 1 day'
     }
 
@@ -102,7 +102,7 @@ export function ToursCreateCard({
         <CardTitle>{editingId ? 'Edit Tour' : 'Create Tour'}</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="grid gap-4 md:grid-cols-2 max-h-96 overflow-y-auto pr-2" onSubmit={handleSubmit}>
+        <form className="grid gap-4 md:grid-cols-2 max-h-96 overflow-y-auto pr-2" onSubmit={handleSubmit} autoComplete="off">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             <input
@@ -115,6 +115,7 @@ export function ToursCreateCard({
                 clearError('name')
               }}
               className={`${inputBaseClasses} ${errors.name ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
           </div>
@@ -130,6 +131,7 @@ export function ToursCreateCard({
                 clearError('country')
               }}
               className={`${inputBaseClasses} ${errors.country ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.country && <p className="text-xs text-destructive">{errors.country}</p>}
           </div>
@@ -139,12 +141,16 @@ export function ToursCreateCard({
               id="price"
               ref={priceRef}
               type="number"
+              min={0.01}
+              max={99999999.99}
+              step={0.01}
               value={value.price}
               onChange={(e) => {
                 onChange({ ...value, price: +e.target.value })
                 clearError('price')
               }}
               className={`${inputBaseClasses} no-spinner ${errors.price ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.price && <p className="text-xs text-destructive">{errors.price}</p>}
           </div>
@@ -154,12 +160,16 @@ export function ToursCreateCard({
               id="duration"
               ref={durationRef}
               type="number"
+              min={1}
+              max={10000}
+              step={1}
               value={value.durationDays ?? ''}
               onChange={(e) => {
                 onChange({ ...value, durationDays: +e.target.value || 0 })
                 clearError('durationDays')
               }}
               className={`${inputBaseClasses} no-spinner ${errors.durationDays ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.durationDays && <p className="text-xs text-destructive">{errors.durationDays}</p>}
           </div>
@@ -171,6 +181,7 @@ export function ToursCreateCard({
               value={value.description ?? ''}
               onChange={(e) => onChange({ ...value, description: e.target.value })}
               className={inputBaseClasses}
+              autoComplete="off"
             />
           </div>
 

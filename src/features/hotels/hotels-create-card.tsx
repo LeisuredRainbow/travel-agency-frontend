@@ -84,7 +84,7 @@ export function HotelsCreateCard({ value, onChange, onApply, isPending, editingI
         <CardTitle>{editingId ? 'Edit Hotel' : 'Create Hotel'}</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit}>
+        <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit} autoComplete="off">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             <input
@@ -96,6 +96,7 @@ export function HotelsCreateCard({ value, onChange, onApply, isPending, editingI
                 clearError('name')
               }}
               className={`${inputBaseClasses} ${errors.name ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
           </div>
@@ -107,6 +108,7 @@ export function HotelsCreateCard({ value, onChange, onApply, isPending, editingI
               value={value.address ?? ''}
               onChange={(e) => onChange({ ...value, address: e.target.value })}
               className={inputBaseClasses}
+              autoComplete="off"
             />
           </div>
           <div className="space-y-2">

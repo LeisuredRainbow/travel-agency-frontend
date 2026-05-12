@@ -192,6 +192,7 @@ export function FilterPanel({ fields, onApply, onClear, onValidationError }: Fil
                 <div>
                   <Input
                     type={isDate ? 'date' : 'text'}
+                    lang={isDate ? 'en' : undefined}
                     inputMode={!isDate && field.type === 'number' ? 'decimal' : undefined}
                     value={field.value}
                     onChange={(e) => {
@@ -207,6 +208,7 @@ export function FilterPanel({ fields, onApply, onClear, onValidationError }: Fil
                     className={`h-8 text-sm w-full ${
                       errors[field.key] ? 'border-destructive ring-1 ring-destructive/30' : ''
                     }`}
+                    autoComplete="off"
                   />
                   {errors[field.key] && (
                     <p className="text-xs text-destructive mt-1">{errors[field.key]}</p>

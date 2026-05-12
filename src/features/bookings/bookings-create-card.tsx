@@ -112,11 +112,13 @@ export function BookingsCreateCard({
                 <Input
                   id={`bookingDate-${index}`}
                   type="date"
+                  lang="en"
                   min={minDate}
                   value={item.bookingDate}
                   onChange={(e) => onUpdateRow(index, { bookingDate: e.target.value })}
                   required
                   className="w-full"
+                  autoComplete="off"
                 />
               </div>
               <div className="space-y-1">

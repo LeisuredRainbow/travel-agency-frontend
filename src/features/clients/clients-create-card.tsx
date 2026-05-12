@@ -76,7 +76,7 @@ export function ClientsCreateCard({ value, onChange, onApply, isPending, editing
         <CardTitle>{editingId ? 'Edit Client' : 'Create Client'}</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit} noValidate>
+        <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit} noValidate autoComplete="off">
           <div className="space-y-2">
             <Label htmlFor="firstName">First Name</Label>
             <input
@@ -88,6 +88,7 @@ export function ClientsCreateCard({ value, onChange, onApply, isPending, editing
                 clearError('firstName')
               }}
               className={`${inputBaseClasses} ${errors.firstName ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.firstName && <p className="text-xs text-destructive">{errors.firstName}</p>}
           </div>
@@ -102,6 +103,7 @@ export function ClientsCreateCard({ value, onChange, onApply, isPending, editing
                 clearError('lastName')
               }}
               className={`${inputBaseClasses} ${errors.lastName ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.lastName && <p className="text-xs text-destructive">{errors.lastName}</p>}
           </div>
@@ -118,6 +120,7 @@ export function ClientsCreateCard({ value, onChange, onApply, isPending, editing
                 clearError('phone')
               }}
               className={`${inputBaseClasses} ${errors.phone ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
           </div>
@@ -134,6 +137,7 @@ export function ClientsCreateCard({ value, onChange, onApply, isPending, editing
                 clearError('email')
               }}
               className={`${inputBaseClasses} ${errors.email ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
           </div>

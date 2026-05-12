@@ -80,7 +80,7 @@ export function GuidesCreateCard({ value, onChange, onApply, isPending, editingI
         <CardTitle>{editingId ? 'Edit Guide' : 'Create Guide'}</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit} noValidate>
+        <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit} noValidate autoComplete="off">
           <div className="space-y-2">
             <Label htmlFor="firstName">First Name</Label>
             <input
@@ -92,6 +92,7 @@ export function GuidesCreateCard({ value, onChange, onApply, isPending, editingI
                 clearError('firstName')
               }}
               className={`${inputBaseClasses} ${errors.firstName ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.firstName && <p className="text-xs text-destructive">{errors.firstName}</p>}
           </div>
@@ -106,6 +107,7 @@ export function GuidesCreateCard({ value, onChange, onApply, isPending, editingI
                 clearError('lastName')
               }}
               className={`${inputBaseClasses} ${errors.lastName ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.lastName && <p className="text-xs text-destructive">{errors.lastName}</p>}
           </div>
@@ -122,6 +124,7 @@ export function GuidesCreateCard({ value, onChange, onApply, isPending, editingI
                 clearError('phone')
               }}
               className={`${inputBaseClasses} ${errors.phone ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
           </div>
@@ -138,6 +141,7 @@ export function GuidesCreateCard({ value, onChange, onApply, isPending, editingI
                 clearError('email')
               }}
               className={`${inputBaseClasses} ${errors.email ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
           </div>
@@ -152,6 +156,7 @@ export function GuidesCreateCard({ value, onChange, onApply, isPending, editingI
                 clearError('experienceYears')
               }}
               className={`${inputBaseClasses} no-spinner ${errors.experienceYears ? 'border-destructive ring-destructive/20' : ''}`}
+              autoComplete="off"
             />
             {errors.experienceYears && <p className="text-xs text-destructive">{errors.experienceYears}</p>}
           </div>
