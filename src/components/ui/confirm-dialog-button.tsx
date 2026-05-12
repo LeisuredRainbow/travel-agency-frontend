@@ -30,8 +30,8 @@ export function ConfirmDialogButton({
   triggerLabel,
   title,
   description,
-  confirmLabel = 'Подтвердить',
-  cancelLabel = 'Отмена',
+  confirmLabel = 'Confirm',
+  cancelLabel = 'Cancel',
   onConfirm,
   disabled = false,
   isPending = false,
@@ -83,7 +83,7 @@ export function ConfirmDialogButton({
             onClick={handleConfirm}
             disabled={isPending}
           >
-            {isPending ? 'Выполнение...' : confirmLabel}
+            {isPending ? 'Processing...' : confirmLabel}
           </Button>
         </DialogFooter>
       </DialogContent>
