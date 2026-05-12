@@ -36,7 +36,9 @@ export function BookingsTableCard({
             <DataTable columns={columns} data={data} />
             <div className="flex items-center justify-between mt-4">
               <span className="text-sm text-muted-foreground">
-                Page {page + 1} of {totalPages}
+                {totalPages > 0
+                ? `Page ${page + 1} of ${totalPages}`
+                : 'Page 0 of 0'}
               </span>
               <div className="flex gap-2">
                 <Button variant="outline" onClick={onPrev} disabled={!canPrev}>
